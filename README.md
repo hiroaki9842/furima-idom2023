@@ -28,7 +28,7 @@
 | Column             | Type        | Options    |
 | ------------------ | ------------| -----------|
 |item_id             | integer     |null: false |
-|category            | string      |null: false |
+|item_category_id    | string      |null: false |
 |item_name           | string      |null: false |
 |item_condition      | string      |null: false |
 |postage             | string      |null: false |
