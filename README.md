@@ -5,14 +5,14 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | --------------------------|
-|nick_name           |string  |null:false,unique: true    |
-|email               |string  |null:false                 |
+|nick_name           |string  |null:false                 | 
+|email               |string  |null:false,,unique: true   |
 |pass_word           |string  |null:false                 |
 |kanji_first_name    |string  |null:false                 |
 |kanji_last_name     |string  |null:false                 |
 |kana_first_name     |string  |null:false                 |
 |kana_last_name      |string  |null:false                 |
-|birthday_yyyy       |string  |null:false                 |
+|birthday_yyyy       |integer |null:false                 |
 |birthday_mm         |integer |null:false                 |
 |birthday_dd         |integer |null:false                 |
 
