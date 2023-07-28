@@ -34,8 +34,8 @@
 |postage             | string      |null: false |
 |sender_address      | string      |null: false |
 |day_to_shipment     | string      |null: false |
-|price               |integer      |null: false |
-|stock               |boolean      |null: false |
+|price               | integer     |null: false |
+|stock               | boolean     |null: false |
 
 ###Association
 
@@ -60,11 +60,13 @@
 
 | Column             | Type        | Options          |
 | ------------------ | ------------| -----------------|
-|id                  | integer     | foreign_key: true|
+|id                  | integer     |foreign_key: true |
 |post_code           | integer     |null: false       |
 |mailing_address     | string      |null: false       |
 |house_number        | integer     |null: false       |
 |building_name       | string      |null: false       |
 |phone_number        | integer     |null: false       | 
+
+###Association
 
 -belongs_to :order
