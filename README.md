@@ -7,14 +7,13 @@
 | ------------------ | ------ | --------------------------|
 |nick_name           |string  |null:false                 | 
 |email               |string  |null:false,,unique: true   |
-|pass_word           |string  |null:false                 |
+|encrypted_password  |string  |null:false                 |
 |kanji_first_name    |string  |null:false                 |
 |kanji_last_name     |string  |null:false                 |
 |kana_first_name     |string  |null:false                 |
 |kana_last_name      |string  |null:false                 |
-|birthday_yyyy       |integer |null:false                 |
-|birthday_mm         |integer |null:false                 |
-|birthday_dd         |integer |null:false                 |
+|birthday_yyyy_mm_dd |date    |null:false                 |
+
 
 
 ###Associations
@@ -27,12 +26,10 @@
 
 | Column             | Type        | Options          |
 | ------------------ | ------------| -----------------|
-|user_id             |integer      | foreign_key :true|
-|item_category_id    | string      |null: false       |
+|user                |references   | foreign_key :true|
+|item_category_id    |integer      |null: false       |
 |item_name           | string      |null: false       |
-|item_condition_id   | integer     |       |
-|postage             | string      |null: false       |
-|sender_address      | string      |null: false       |
+|item_condition_id   | integer     |                  |
 |day_to_shipment_id  | integer     |null: false       |
 |price               | integer     |null: false       |
 |shipping_cost_id    | integer     |null: false       |
@@ -53,8 +50,8 @@
 
 | Column             | Type        | Options          |
 | ------------------ | ------------| -----------------|
-|user_id             |integer      | foreign_key: true|
-|item_id             |integer      | foreign_key: true|
+|user                |references   | foreign_key: true|
+|item                |references   | foreign_key: true|
 
 ###Assosiation
 
@@ -66,12 +63,11 @@
 
 | Column             | Type        | Options          |
 | ------------------ | ------------| -----------------|
-|                  | integer     |foreign_key: true |
-|post_code           | integer     |null: false       |
+|post_code           | string      |null: false       |
 |mailing_address     | string      |null: false       |
-|house_number        | integer     |null: false       |
-|building_name       | string      |null: false       |
-|phone_number        | integer     |null: false       | 
+|house_number        | string      |null: false       |
+|building_name       | string      |                  |
+|phone_number        | string      |null: false       | 
 
 ###Association
 
