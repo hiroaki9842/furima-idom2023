@@ -25,22 +25,28 @@
 
 ##items
 
-| Column             | Type        | Options    |
-| ------------------ | ------------| -----------|
-|item_id             | integer     |null: false |
-|item_category_id    | string      |null: false |
-|item_name           | string      |null: false |
-|item_condition      | string      |null: false |
-|postage             | string      |null: false |
-|sender_address      | string      |null: false |
-|day_to_shipment     | string      |null: false |
-|price               | integer     |null: false |
-|stock               | boolean     |null: false |
+| Column             | Type        | Options          |
+| ------------------ | ------------| -----------------|
+|user_id             |integer      | foreign_key :true|
+|item_category_id    | string      |null: false       |
+|item_name           | string      |null: false       |
+|item_condition_id   | integer     |       |
+|postage             | string      |null: false       |
+|sender_address      | string      |null: false       |
+|day_to_shipment_id  | integer     |null: false       |
+|price               | integer     |null: false       |
+|shipping_cost_id    | integer     |null: false       |
+|stock_id            | integer     |null: false       |
 
 ###Association
 
 -belongs_to :user
 -has_one :order
+- belongs_to_active_hash :item_category
+- belongs_to_active_hash :item_condition
+- belongs_to_active_hash :shipping_cost
+- belongs_to_active_hash :stock
+- belongs_to_active_hash :day_to_shippment
 
 
 ##orders
@@ -60,7 +66,7 @@
 
 | Column             | Type        | Options          |
 | ------------------ | ------------| -----------------|
-|id                  | integer     |foreign_key: true |
+|                  | integer     |foreign_key: true |
 |post_code           | integer     |null: false       |
 |mailing_address     | string      |null: false       |
 |house_number        | integer     |null: false       |
