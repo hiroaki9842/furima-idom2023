@@ -46,7 +46,6 @@
 - belongs_to_active_hash :item_condition_id
 - belongs_to_active_hash :shipping_cost_id
 - belongs_to_active_hash :prefecture_id
-- belongs_to_active_hash :stock_id
 - belongs_to_active_hash :day_to_shipment_id
 
 
