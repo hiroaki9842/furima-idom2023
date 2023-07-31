@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_014634) do
     t.string "kanji_last_name", null: false
     t.string "kana_first_name", null: false
     t.string "kana_last_name", null: false
-    t.integer "birthday_yyyy_mm_dd", null: false
+    t.date "birthday_yyyy_mm_dd", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -29,4 +29,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_28_014634) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "items", "users"
 end
