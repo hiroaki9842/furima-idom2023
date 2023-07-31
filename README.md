@@ -37,7 +37,6 @@
 |prefecture_id       | integer     |null:false                  |
 |day_to_shipment_id  | integer     |null: false                 |
 |price               | integer     |null: false                 |
-|stock_id            | integer     |null: false                 |
 
 ###Association
 
