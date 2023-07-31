@@ -72,3 +72,4 @@ group :test do
 end
 #デバイスgemを追加
 gem 'devise'
+gem 'pry-rails'
