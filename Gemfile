@@ -76,3 +76,6 @@ end
 #デバイスgemを追加
 gem 'devise'
 gem 'pry-rails'
+
+#アクティブハッシュgemを追加
+gem 'active_hash'
