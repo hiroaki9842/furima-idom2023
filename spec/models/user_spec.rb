@@ -7,15 +7,15 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context '新規登録できるとき' do
-      it 'nicknameとemail、passwordとpassword_confirmation、kanji_fist_name、kanji_last_name、kana_first_name、kana_last_name、bithday_yyyy、bithday_mm、bithday_ddが存在すれば登録できる' do
+      it 'nick_nameとemail、passwordとpassword_confirmation、kanji_fist_name、kanji_last_name、kana_first_name、kana_last_name、bithday_yyyy、bithday_mm、bithday_ddが存在すれば登録できる' do
         expect(@user).to be_valid
       end
     end
     context '新規登録できないとき' do
-      it 'nicknameが空では登録できない' do
-        @user.nickname = ''
+      it 'nick_nameが空では登録できない' do
+        @user.nick_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+        expect(@user.errors.full_messages).to include("Nick name can't be blank")
       end
       it 'emailが空では登録できない' do
         @user.email = ''
@@ -42,18 +42,18 @@ RSpec.describe User, type: :model do
       it 'passwordが6文字未満では登録できない' do
         @user.password = '1'
         @user.valid?
-        except(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
+        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
-      it 'パスワードは、英字のみ又は数字のみでは登録できない' do
-        @user.password = '111111111'
+      it 'パスワードが数字のみでは登録できない' do
+        @user.password = '123456'
         @user.valid?
-        except(@user.errors.full_messages).to include('内容が分からないので調査必要')
+        expect(@user.errors.full_messages).to include('は半角英数を両方含む必要があります')
       end
       it 'passwordとpassword_confirmationが不一致では登録できない' do
         @user.password = '111aaa'
         @user.password_confirmation = '222aaa'
         @user.valid?
-        except(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it 'kanji_fist_nameが空では登録できない' do
         @user.kanji_fist_name = ''
@@ -68,12 +68,12 @@ RSpec.describe User, type: :model do
       it 'kanji_fist_nameが全角（漢字・ひらがな・カタカナ）でない場合は登録できない' do
         @user.kanji_fist_name = 'satomi'
         @user.valid?
-        except(@user.errors.full_messages).to include('内容が分からないので調査必要')
+        expect(@user.errors.full_messages).to include('First name is not full-width (kanji, hiragana, katakana), it cannot be registered.')#エラー文言追加7/31
       end
       it 'kanji_last_nameが全角（漢字・ひらがな・カタカナ）でない場合は登録できない' do
         @user.kanji_last_name = 'ishihara'
         @user.valid?
-        except(@user.errors.full_messages).to include('内容が分からないので調査必要')
+        expect(@user.errors.full_messages).to include('Last name is not full-width (kanji, hiragana, katakana), it cannot be registered.')#エラー文言追加7/31
       end
       it 'kana_first_name又はkana_last_nameが空では登録できない' do
         @user.kana_first_name = ''
@@ -88,27 +88,17 @@ RSpec.describe User, type: :model do
       it 'kana_first_nameが全角（カタカナ）でない場合は登録できない' do
         @user.kana_first_name = 'さとみ'
         @user.valid?
-        except(@user.errors.full_messages).to include('内容が分からないので調査必要')
+        expect(@user.errors.full_messages).to include('First name is not full-width (katakana), it cannot be registered.')#エラー文言追加7/31
       end
       it 'kana_last_nameが全角（カタカナ）でない場合は登録できない' do
         @user.kana_last_name = '石原'
         @user.valid?
-        except(@user.errors.full_messages).to include('内容が分からないので調査必要')
+        expect(@user.errors.full_messages).to include('Last name is not full-width (katakana), it cannot be registered.')#エラー文言追加7/31
       end
-      it 'bithday_yyyyが空の場合は登録できない' do
-        @user.bithday_yyyy = ''
+      it 'bithday_yyyy_mm_ddが空の場合は登録できない' do
+        @user.bithday_yyyy_mm_dd = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Bithday_yyyy can't be blank")
-      end
-      it 'bithday_mmのいずれかが空の場合は登録できない' do
-        @user.bithday_mm = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Bithday_mm can't be blank")
-      end
-      it 'bithday_yyyy、bithday_mm、bithday_ddのいずれかが空の場合は登録できない' do
-        @user.bithday_dd = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Bithday_dd can't be blank")
+        expect(@user.errors.full_messages).to include("Bithday can't be blank")
       end
     end
   end

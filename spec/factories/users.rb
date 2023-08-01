@@ -1,15 +1,13 @@
 FactoryBot.define do
   factory :user do
-    nickname              {'test'}
+    nick_name              {'test'}
     email                 {Faker::Internet.email}
     password              {'000aaa'}
     password_confirmation {password}
-    kanji_fist_name       {'二郎'}
+    kanji_first_name       {'二郎'}
     kanji_last_name       {'三田'}
     kana_first_name       {'ジロウ'}
     kana_last_name        {'ミタ'}
-    bithday_yyyy          {'2023'}
-    bithday_mm            {'07'}
-    bithday_dd            {'27'}
+    birthday_yyyy_mm_dd          {'2023-07-27'}
   end
 end
