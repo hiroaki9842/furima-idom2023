@@ -79,3 +79,7 @@ gem 'pry-rails'
 
 #アクティブハッシュgemを追加
 gem 'active_hash'
+
+#ミニマジックとイメージプロセッシングgemを追加
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
