@@ -5,12 +5,15 @@ window.addEventListener("turbo:load", () => {
     const feeDom = document.getElementById("add-tax-price");
     const profitDom = document.getElementById("profit");
 
-// priceに値が入力されたらイベント発火
+// priceが入力されたらイベント発火
     priceInput.addEventListener("input", () => {
       const inputValue = document.getElementById("item-price").value;
+      //販売手数料の計算（表示の為カンマ有り）
         let tax = Math.floor(inputValue * 0.1).toLocaleString(); 
         feeDom.innerHTML = tax ;
-        profitDom.innerHTML = Math.ceil(inputValue - tax).toLocaleString();
+      //販売手数料の計算（利益計算の為カンマ無し）
+        let tax1 =  Math.floor(inputValue * 0.1)
+        profitDom.innerHTML =  Math.ceil(inputValue - tax1 ).toLocaleString();
     })
   }
 });
