@@ -3,8 +3,8 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :image,                 presence: true
-  validates :item_name,             presence: true 
-  validates :item_summary ,         presence: true 
+  validates :item_name,             presence: true, length: {maximum: 40 } 
+  validates :item_summary ,         presence: true, length: {maximum: 1000 }
   validates :item_category_id ,     presence: true, numericality: {other_than: 1}
   validates :item_condition_id ,    presence: true, numericality: {other_than: 1}
   validates :shipping_cost_id ,     presence: true, numericality: {other_than: 1}
