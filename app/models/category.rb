@@ -1,7 +1,5 @@
-class CreateItems < ActiveRecord::Migration[7.0]
-  def change
-    class Category < ActiveHash::Base
-      #出品機能時のカテゴリー
+class Category < ActiveHash::Base
+        #出品機能時のカテゴリー
     self.data = [
       { id: 1, name: '---' }, 
       { id: 2, name: 'メンズ' }, 
@@ -17,6 +15,4 @@ class CreateItems < ActiveRecord::Migration[7.0]
       ]
     include ActiveHash::Associations
     has_many :items
-    end
-  end
 end
