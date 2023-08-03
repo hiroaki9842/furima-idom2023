@@ -1,16 +1,22 @@
 class CreateItems < ActiveRecord::Migration[7.0]
   def change
-    create_table :items do |t|
-      t.references :user,                  null: false, foreign_key: true
-      t.string     :item_name,             null: false
-      t.text       :item_summary,          null: false
-      t.integer    :item_category_id,      null: false
-      t.integer    :item_condition_id,     null: false
-      t.integer    :shipping_cost_id,      null: false
-      t.integer    :prefecture_id,         null: false
-      t.integer    :day_to_shipment_id,    null: false
-      t.integer    :price,                 null: false
-      t.timestamps
+    class Category < ActiveHash::Base
+      #出品機能時のカテゴリー
+    self.data = [
+      { id: 1, name: '---' }, 
+      { id: 2, name: 'メンズ' }, 
+      { id: 3, name: 'レディース' }, 
+      { id: 4, name: 'ベビー・キッズ' }, 
+      { id: 5, name: 'インテリア・住まい・小物' }, 
+      { id: 6, name: '本・音楽・ゲーム' }, 
+      { id: 7, name: 'おもちゃ・ホビー・グッズ' }, 
+      { id: 8, name: '家電・スマホ・カメラ' }, 
+      { id: 9, name: 'スポーツ・レジャー' }, 
+      { id: 10, name: 'ハンドメイド' }, 
+      { id: 11, name: 'その他' }
+      ]
+    include ActiveHash::Associations
+    has_many :items
     end
   end
 end
