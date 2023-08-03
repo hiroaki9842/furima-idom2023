@@ -81,3 +81,6 @@ gem 'pry-rails'
 group :production do
   gem 'pg'
 end
+
+#アクティブハッシュGemを追加
+gem 'active_hash'
