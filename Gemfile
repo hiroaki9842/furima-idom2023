@@ -77,3 +77,7 @@ end
 gem 'devise'
 gem 'pry-rails'
 
+#デプロイgem追加
+group :production do
+  gem 'pg'
+end
