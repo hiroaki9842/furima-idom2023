@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  belongs_to :user,optional:true
+  belongs_to :user
   has_one_attached :image
 
   validates :image,                 presence: true
@@ -20,7 +20,6 @@ class Item < ApplicationRecord
 
   #価格は全て半角かつ整数
   with_options presence: true do
-    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999},
-    format: {with: /\A[0-9]+\z/}
+    validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999}
   end      
 end

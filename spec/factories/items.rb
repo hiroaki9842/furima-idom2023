@@ -1,8 +1,7 @@
     FactoryBot.define do
       factory :item do
-          # association :user 
+          association :user 
     
-          user_id               {'1'}
           item_name             {'二郎ラーメン'}
           item_summary          {'美味しい'}
           item_category_id      {'2'}

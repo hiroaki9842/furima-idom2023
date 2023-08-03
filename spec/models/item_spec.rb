@@ -7,6 +7,7 @@ RSpec.describe Item, type: :model do
   describe '商品登録' do
     context '商品登録できるとき' do
       it 'user_idとitem_name、item_summaryとitem_category_id、item_condition_id、shipping_cost_id、prefecture_id、day_to_shipment、price が存在すれば登録できる' do
+        
         expect(@item).to be_valid
       end
     end
@@ -39,7 +40,16 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Item summary is too long (maximum is 1000 characters)")
         end
-
+        it '金額が空では登録できない' do
+          @item.price = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price can't be blank")
+        end
+        it '金額に半角数字以外が含まれている場合登録できない' do
+          @item.price = 'abc' # 半角数字以外の文字列を代入
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is not a number")
+        end
         it '金額が300円未満だと出品できない' do
         @item.price = '299'
         @item.valid?
