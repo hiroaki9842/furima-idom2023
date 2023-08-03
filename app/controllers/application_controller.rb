@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  
   before_action :basic_auth   #Basic認証機能を有効化
   before_action :configure_permitted_parameters, if: :devise_controller?
 
