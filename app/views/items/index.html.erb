@@ -129,7 +129,7 @@
     <ul class='item-lists'>
       <% @items.each do |i| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(id: i.id) do %>
         <div class='item-img-content'>
           <%= image_tag i.image, class: "item-img" %>
           <%# 商品が売れていればsold outを表示しましょう %>
@@ -152,6 +152,7 @@
         <% end %>
       </li>
       <% end %>
+      <%# 商品が出品されていない場合は以下のダミー画像を表示 %>
      <% if @items.empty?  %>
       <li class='list'>
         <%= link_to '#' do %>
