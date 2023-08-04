@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
         another_user = FactoryBot.build(:user)
         another_user.email = @user.email
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Email has already been taken")
+        expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailに@がないと登録できない' do
         @user.email = 'testmail'
@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
       it 'passwordが6文字未満では登録できない' do
         @user.password = '1'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
       it 'パスワードが英語のみでは登録できない' do
         @user.password = 'abcdef'
@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
         @user.password = 'ああああああ'
         @user.password_confirmation = 'ああああああ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password は半角英数を両方含む必要があります")
+        expect(@user.errors.full_messages).to include('Password は半角英数を両方含む必要があります')
       end
       it 'passwordとpassword_confirmationが不一致では登録できない' do
         @user.password = '111aaa'
@@ -76,27 +76,27 @@ RSpec.describe User, type: :model do
       it 'kanji_last_nameが空では登録できない' do
         @user.kanji_last_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kanji last name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('Kanji last name 全角文字を使用してください')
       end
       it 'kanji_first_nameが全角（漢字・ひらがな・カタカナ）でない場合は登録できない' do
         @user.kanji_first_name = 'satomi'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kanji first name 全角文字を使用してください')#エラー文言追加7/31
+        expect(@user.errors.full_messages).to include('Kanji first name 全角文字を使用してください') # エラー文言追加7/31
       end
       it 'kanji_last_nameが全角（漢字・ひらがな・カタカナ）でない場合は登録できない' do
         @user.kanji_last_name = 'ishihara'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kanji last name 全角文字を使用してください')#エラー文言追加7/31
+        expect(@user.errors.full_messages).to include('Kanji last name 全角文字を使用してください') # エラー文言追加7/31
       end
       it 'kana_first_name又はkana_last_nameが空では登録できない' do
         @user.kana_first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana first name 全角カタカナを使用してください")
+        expect(@user.errors.full_messages).to include('Kana first name 全角カタカナを使用してください')
       end
       it 'kana_last_nameが空では登録できない' do
         @user.kana_last_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana last name 全角カタカナを使用してください")
+        expect(@user.errors.full_messages).to include('Kana last name 全角カタカナを使用してください')
       end
       it 'kana_first_nameが全角（カタカナ）でない場合は登録できない' do
         @user.kana_first_name = 'さとみ'
@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
       it 'kana_last_nameが全角（カタカナ）でない場合は登録できない' do
         @user.kana_last_name = '石原'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana last name 全角カタカナを使用してください")
+        expect(@user.errors.full_messages).to include('Kana last name 全角カタカナを使用してください')
       end
       it 'birthday_yyyy_mm_ddが空の場合は登録できない' do
         @user.birthday_yyyy_mm_dd = ''
