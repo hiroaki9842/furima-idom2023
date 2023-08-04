@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # ログイン状態の確認
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index,:show]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
   
   def show
     @item = Item.find(params[:id])
+    @condition  =  Condition.find(@item.item_condition_id).name 
+    @category = Category.find(@item.item_category_id).name
   end
 
   private
