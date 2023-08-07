@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
     @category = Category.find(@item.item_category_id).name
   end
 
+
   def edit
     if current_user != @item.user
       redirect_to root_path
@@ -39,6 +40,14 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+
+  def destroy
+    item = Item.find(params[:id])
+    if current_user.id == @item.user_id
+      item.destroy
+    end
+      redirect_to root_path
+
   end
 
   private
