@@ -1,3 +1,4 @@
+<%= include_gon %> #gonの読み込み
 <%= render "shared/second-header"%>
 
 <div class='transaction-contents'>
@@ -19,7 +20,6 @@
       </div>
     </div>
     <%# /購入内容の表示 %>
-
     <%# 支払額の表示 %>
     <div class='item-payment'>
       <h1 class='item-payment-title'>
@@ -30,7 +30,8 @@
       </p>
     </div>
     <%# /支払額の表示 %>
-<%# カード情報の入力 %>
+    <%= form_with model:@order_address,url:item_orders_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -65,9 +66,7 @@
         <div id="cvc-form" class="input-default"></div>
       </div>
     </div>
-    <%# /カード情報の入力 %>
-
-    <%= form_with model:@order_address,url:item_orders_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%# /カード情報の入力 %>    
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>
       <h1 class='info-input-haedline'>
