@@ -87,3 +87,6 @@ gem 'active_hash'
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+
+#Pay.jpのGem追加
+gem 'payjp'
