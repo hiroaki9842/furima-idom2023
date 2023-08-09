@@ -93,3 +93,7 @@ gem 'payjp'
 
 #RailsからJavaScriptに変数を渡すためのGem
 gem 'gon'
+
+#S3の導入
+gem "aws-sdk-s3", require: false
+
