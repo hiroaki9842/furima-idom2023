@@ -3,16 +3,17 @@ class OrderAddress
   attr_accessor :post_code,:prefecture_id,:mailing_address,:house_number,:building_name,:phone_number,:user_id,:item_id,:token,:price
 
 #addressモデルのバリデーション
-with_options presence: true do
-  validates  :token
+  validates  :token, presence: true
   validates  :post_code,      format:{with: /\A\d{3}[-]\d{4}\z/}
-  validates  :prefecture_id,   numericality: { other_than: 1 }
-  validates  :mailing_address
-  validates  :house_number
-  validates  :phone_number,   format:{with: /\A\d{10,11}\z/, message: 'is too short'}
-  validates  :user_id
-  validates  :item_id
-end
+  validates  :post_code,     presence: true,  format:{with: /\A\d{3}[-]\d{4}\z/,message: "Enter it as follows (e.g. 123-4567)"}
+  validates  :prefecture_id,  presence: true,  numericality: { other_than: 1 }
+  validates  :mailing_address, presence: true
+  validates  :house_number, presence: true
+  validates  :phone_number,    presence: true, format:{with: /\A[0-9]+\z/,message:'Input only half-width number'},length:{in:10..11}
+  validates  :user_id ,presence: true
+  validates  :item_id , presence: true
+  
+
 
 #orderとaddressへのデータ保存
   def save

@@ -72,27 +72,27 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numberが空では登録できない' do
         @order_address.phone_number = ''
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number can't be blank", "Phone number is too short")
+        expect(@order_address.errors.full_messages).to include("Phone number can't be blank")
       end
 
       it 'phone_numberは9桁以下では登録できない' do
         @order_address.phone_number = '012345678'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is too short")
+        expect(@order_address.errors.full_messages).to include("Phone number is too short (minimum is 10 characters)")
       end
 
       it 'phone_numberは12桁以上では登録できない' do
         @order_address.phone_number = '012345678901'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is too short")
+        expect(@order_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
 
       it ' phone_numberは半角数字以外が含まれている場合は購入できない（※半角数字以外が一文字でも含まれていれば良い）' do
         @order_address.phone_number = '0123４567890'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone number is too short")
+        expect(@order_address.errors.full_messages).to include("Phone number Input only half-width number")
       end
-
+      
       it 'userが紐付いていなければ購入できない' do
         @order_address.user_id = nil
         @order_address.valid?
