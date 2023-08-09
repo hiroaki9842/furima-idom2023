@@ -11,6 +11,7 @@ with_options presence: true do
   validates  :house_number
   validates  :phone_number,   format:{with: /\A\d{10,11}\z/, message: 'is too short'}
   validates  :user_id
+  validates  :item_id
 end
 
 #orderとaddressへのデータ保存

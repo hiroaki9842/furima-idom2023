@@ -87,6 +87,12 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Phone number is too short")
       end
 
+      it ' phone_numberは半角数字以外が含まれている場合は購入できない（※半角数字以外が一文字でも含まれていれば良い）' do
+        @order_address.phone_number = '0123４567890'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number is too short")
+      end
+
       it 'userが紐付いていなければ購入できない' do
         @order_address.user_id = nil
         @order_address.valid?
@@ -96,7 +102,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'itemが紐付いていなければ購入できない' do
         @order_address.item_id = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include()
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
       end  
     end
   end
