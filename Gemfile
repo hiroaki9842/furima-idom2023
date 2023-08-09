@@ -88,5 +88,12 @@ gem 'active_hash'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 
+#Pay.jpのGem追加
+gem 'payjp'
+
+#RailsからJavaScriptに変数を渡すためのGem
+gem 'gon'
+
 #S3の導入
 gem "aws-sdk-s3", require: false
+
