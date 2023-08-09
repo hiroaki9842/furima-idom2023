@@ -87,3 +87,6 @@ gem 'active_hash'
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+
+#S3の導入
+gem "aws-sdk-s3", require: false
