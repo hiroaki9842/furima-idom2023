@@ -50,6 +50,9 @@ test:
 #
 production:
   <<: *default
-  database: furima_idom2023_production
-  username: furima_idom2023
-  password: <%= ENV["FURIMA_IDOM2023_DATABASE_PASSWORD"] %>
+  <<: *default
+  adapter: mysql2
+  database: furima-idom2023_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
