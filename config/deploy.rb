@@ -5,7 +5,7 @@ lock '3.17.3'
 set :application, 'furima-idom2023'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:keitootiek/furima-idom2023.git'
+set :repo_url,  'git@github.com:hiroaki9842/furima-idom2023.git'
 set :branch, 'main'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
