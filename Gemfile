@@ -80,6 +80,7 @@ gem 'pry-rails'
 #デプロイgem追加
 group :production do
   gem 'pg'
+  gem 'unicorn', '6.1.0'
 end
 
 #アクティブハッシュGemを追加
